@@ -1,4 +1,5 @@
 # fable-mocha
+
 Fable bindings for [Mocha](https://mochajs.org/).
 
 ## Build Configuration
@@ -8,9 +9,7 @@ See https://harry.vangberg.name/unit-testing-fable-with-mocha
 ## Example
 
 ```
-open Mocha
-open Matchers
-
+open Fable.Import.Mocha
 
 /// Assert that the expected and actual values are equal
 let assertEqual expected actual: unit =
