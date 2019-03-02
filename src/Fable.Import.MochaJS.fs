@@ -1,5 +1,5 @@
 /// Fable bundings for Mocha, see https://mochajs.org/
-module Fable.Import.Mocha
+module Fable.Import.MochaJS
 
 open Fable.Core
 
