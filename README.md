@@ -18,7 +18,11 @@ See https://harry.vangberg.name/unit-testing-fable-with-mocha
 
 ### Example
 
+#### Test Suite
+
 ```
+module Test.Example
+
 open Fable.Import.MochaJS
 
 /// Assert that the expected and actual values are equal
@@ -29,19 +33,33 @@ let assertEqual expected actual: unit =
 let assertNotEqual expected actual: unit =
     Assert.NotEqual(actual, expected)
 
-describe "test suite" (fun _ ->
-    it "should do something poorly" (fun _ ->
+describe "test suite" <| fun _ ->
+    it "should do something poorly" <| fun _ ->
         assertEqual 1 2
-    )
-    it "should do something well" (fun _ ->
+    it "should do something well" <| fun _ ->
         assertEqual 2 2
     )
-    it "should do something else well" (fun _ ->
+    it "should do something else well" <| fun _ ->
         assertNotEqual 23 65
-    )
-)
 |> ignore
 ```
+
+#### Test Runner
+
+You will also need to import side effects from *every test suite* in a main test runner, otherwise test suites
+won't be detected by Mocha.
+
+```
+module Test.Main
+
+open Fable.Core.JsInterop
+
+importSideEffects "./TestSuiteA.fs"
+importSideEffects "./TestSuiteB.fs"
+// etc
+
+```
+
 
 ## Development
 
